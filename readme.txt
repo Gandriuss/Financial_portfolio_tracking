@@ -7,7 +7,7 @@ main.py:
 	active_stocks_info - currently owned ('Active') instrument details, displaying all purchased share amounts and their corresponding prices.
 	porftolio_history - historacl track_record containing portfolios' price, value and net_profit fluctuations.
 * main.py retrieves queries and functions from functions.py & Postgress database connection credentials from config.py.
-* updates are sent to a private Telegram channel via Telegram Bot
+* updates are sent to a private Telegram channel via Telegram Bot. For the set up, simply create it and start a chat with it. Then look up the details of bot's token & your chat_id
 
 
 processes_portfolio_changes:
