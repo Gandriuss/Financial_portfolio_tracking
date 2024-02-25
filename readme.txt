@@ -1,17 +1,20 @@
 main.py:
 
-* process uploads stock information into a local Postgress database within interval [last_run_time;today-1day], looking for currently owned instrument 'End price'.
-* to run the script - changes_in_portfolio.xlsx and changes_in_portfolio_blank.xlsx need to be present in parent directory.
-* information is stored in these main tables:
-	stocks - 'Active'/'Disabled' stock information, identifying each processed unique instrument.
-	active_stocks_info - currently owned ('Active') instrument details, displaying all purchased share amounts and their corresponding prices.
-	porftolio_history - historacl track_record containing portfolios' price, value and net_profit fluctuations.
-* main.py retrieves queries and functions from functions.py & Postgress database connection credentials from config.py.
-* updates are sent to a private Telegram channel via Telegram Bot
+	* process uploads stock information into a local Postgress database within interval [last_run_time;today-1day], looking for currently owned instrument 'End price'.
+	* to run the script - changes_in_portfolio.xlsx and changes_in_portfolio_blank.xlsx need to be present in parent directory.
+	* information is stored in these main tables:
+		stocks - 'Active'/'Disabled' stock information, identifying each processed unique instrument.
+		active_stocks_info - currently owned ('Active') instrument details, displaying all purchased share amounts and their corresponding prices.
+		porftolio_history - historacl track_record containing portfolios' price, value and net_profit fluctuations.
+	* main.py retrieves queries and functions from functions.py & Postgress database connection credentials from config.py.
+	* updates are sent to a private Telegram channel via Telegram Bot
 
 functions.py
-* set event triggers at a point of interest by adding code blocks to 'important_triggers' function:
-	 Query database for relevant information & add notification messages to 'message_list' that will be sent to telegram after the process completes.
+	* set event triggers at a point of interest by adding code blocks to 'important_triggers' function:
+	 	Query database for relevant information & add notification messages to 'message_list' that will be sent to telegram after the process completes.
+
+config.py
+	* stores database credentials, project root (base) directory & Telegrams API connections
 
 processes_portfolio_changes:
 
