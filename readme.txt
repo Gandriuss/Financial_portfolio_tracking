@@ -18,13 +18,13 @@ config.py
 
 processes_portfolio_changes:
 
-* all non_empty historacl changes_in_portfolio.xlsx are stored in this directory.
+	* all non_empty historacl changes_in_portfolio.xlsx are stored in this directory.
 
 
 scheduler:
 
-* passive tracking of portfolio investments is done by setting up a task scheduler catered to a Windows machine (should be configured by the user itself).
-* .bat file runs the main script if it receives the last_run_date (from a .txt file) less than the local date of the machine.
+	* passive tracking of portfolio investments is done by setting up a task scheduler catered to a Windows machine (should be configured by the user itself).
+	* .bat file runs the main script if it receives the last_run_date (from a .txt file) less than the local date of the machine.
 
 
 
@@ -128,12 +128,12 @@ CREATE TABLE colors                   -- color generation script can be found in
 
 
 Troubleshooting and input errors:
-* main.ipynb containing multiple cells is left as a troubleshooting, testing script.
-* In case there is a missing interval in between existing data: 
-	you can rerun the script, if no changes to portfolio shares have been made.
-* Do not run the script for the interval where an instrument was bought AND sold - script won't take that instrument into account.
-* In case false information has been inputed into changes_in_portfolio.xlsx:
-	Update 'stocks' table according to the info before the false input
+	* main.ipynb containing multiple cells is left as a troubleshooting, testing script.
+	* In case there is a missing interval in between existing data: 
+		you can rerun the script, if no changes to portfolio shares have been made.
+	* Do not run the script for the interval where an instrument was bought AND sold - script won't take that instrument into account.
+	* In case false information has been inputed into changes_in_portfolio.xlsx:
+		Update 'stocks' table according to the info before the false input
 	Update 'active_stocks_info' table according to the info before the false input
 	delete from 'porftolio_history' the day of false input and later ones
 	delete input from 'changes'.
