@@ -5,7 +5,7 @@ rem Affect only local variables:
 setlocal
 
 rem Path to the file that stores the last run date:
-set LAST_RUN_FILE=C:/Users/andrius.resetnikovas/Documents/PortfolioTracking/Code/scheduler/last_run_date.txt
+set LAST_RUN_FILE=BASE_DIRECTORY/scheduler/last_run_date.txt
 
 rem Get today's date in YYYY-MM-DD format, i.e. Retrieve local DateTime and parse it within a loop then truncate for date:
 for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /value') do set datetime=%%I
@@ -25,7 +25,7 @@ if "%TODAY%"=="%LAST_RUN%" (
 )
 
 rem Run portfolio tracking script:
-python C:/Users/andrius.resetnikovas/Documents/PortfolioTracking/Code/main.py
+python BASE_DIRECTORY/main.py
 
 rem Update the last run file with today's date:
 echo %TODAY% > "%LAST_RUN_FILE%"
