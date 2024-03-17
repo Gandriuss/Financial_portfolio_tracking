@@ -131,10 +131,25 @@ Troubleshooting and input errors:
 	* main.ipynb containing multiple cells is left as a troubleshooting, testing script.
 	* In case there is a missing interval in between existing data: 
 		you can rerun the script, if no changes to portfolio shares have been made.
-	* Do not run the script for the interval where an instrument was bought AND sold - script won't take that instrument into account.
-	* In case false information has been inputed into changes_in_portfolio.xlsx:
-		Update 'stocks' table according to the info before the false input
-	Update 'active_stocks_info' table according to the info before the false input
-	delete from 'porftolio_history' the day of false input and later ones
-	delete input from 'changes'.
+	* Do not run the script for the interval where an instrument was bought AND sold - script won't consider that instrument.
+	* In case false information has been input into changes_in_portfolio.xlsx ===>
+
+
+===> Procceed to:
+---- 1) update stock information by returning to the last correctly evaluated date (price & share)
+update stocks
+set price = 13.2476, share = 38.5654
+where id = 65
+--set price = 14.0628, share = 73.4144
+--where id = 64
+
+---- 2) delete period where discrepancies started:
+delete from portfolio_history
+where dt >= '2024-03-11'
+delete from active_stocks_info
+where dt >= '2024-03-11'
+delete from changes
+where dt >= '2024-03-11'
+
+---- 3) do a recalc of the removed period with corrected inputs
 	
