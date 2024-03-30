@@ -518,8 +518,8 @@ def plot_stock_growth(engine, visual_reports_dir):
             SELECT
                 ph.id,
                 s.name,
-                ph.profit,
-                LAG(ph.profit, 1, 0) OVER (PARTITION BY ph.id ORDER BY ph.dt) AS prev_profit,
+                ph.end_price as price,
+                LAG(ph.end_price, 1, end_price) OVER (PARTITION BY ph.id ORDER BY ph.dt) AS prev_price,
                 ph.dt,
                 c.color_name_hex
             FROM portfolio_history ph
@@ -531,8 +531,7 @@ def plot_stock_growth(engine, visual_reports_dir):
             SELECT
                 id,
                 name,
-                 (profit-prev_profit)
-                as growth,
+                (price-prev_price)*100/prev_price as growth,
                 dt,
                 color_name_hex
             FROM previous_profits
